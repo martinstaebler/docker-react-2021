@@ -1,0 +1,11 @@
+language: generic 
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t martinstaebler/docker-react-2021 -f Dockerfile.dev
+
+script:
+  - docker run -e CI=true martinstaebler/docker-react-2021 npm run test -- --watchAll=false
+  
